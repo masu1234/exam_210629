@@ -1,31 +1,11 @@
-<!--
-<div>
-<%= #form_for @changeset, Routes.page_path(@conn, :index_by_city, @evacuations), fn f -> %>
-</div>
--->
-
 <h2>市町村を選択</h2>
-
-<%= form_for @changeset, Routes.page_path(@conn, :show), fn f -> %>
-  <% list = for center <- @centers  do
-    center.city
-    end
-    list = Enum.uniq(list)
-  %>
-
-  <label>
-    City: <%= select f, :city, list %>
-  </label>
-
-  <%= submit "検索" %>
-<% end %>
 
 
 <h1>避難所一覧（Evacuation Center）</h1>
 
 <div id="map"></div>
 <script>
-var map = L.map('map').setView([35.685344,	139.739763], 12);
+var map = L.map('map').setView([35.685344,	139.739763], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -36,7 +16,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 <%= for center <- @centers  do%>
 <script>
 L.marker([<%= center.lng %>, <%= center.lat %>]).addTo(map)
-    .bindPopup('<%= center.name <> "("<> center.adress <> ")" %>')
+    .bindPopup('<%= center.name <> "("<> center.adress <> ")" %>');
 
 </script>
 <% end %>
