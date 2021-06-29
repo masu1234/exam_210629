@@ -1,0 +1,5 @@
+<h1>Edit Center</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.center_path(@conn, :update, @center)) %>
+
+<span><%= link "Back", to: Routes.center_path(@conn, :index) %></span>

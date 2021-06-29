@@ -33,13 +33,12 @@ defmodule DataConv do
     tale = tl(data_list)
     data_hd = String.split(data_hd, " ")
     data_hd = Enum.map(data_hd, fn x -> String.to_integer(x) end)
-    #%{"status" => %{"vtx_num"=> 8, "ls_num"=> 8, "tri_num"=> 8}}
-
 
     map = %{:status => Enum.zip([:vtx_num, :ls_num, :tri_num], data_hd)}
     [map, tale]
   end
 
+  #【時間があれば修正】Enum.tekeの取得数は変更の余地あり。getStatで得たリストの要素を活用すればよい。
   def getVtx(list) do
     vtx_list = Enum.take(list, 8)
     left_list = Enum.take(list, -length(list)+8)
@@ -51,6 +50,7 @@ defmodule DataConv do
     [map, left_list]
   end
 
+  #【時間があれば修正】Enum.tekeの取得数は変更の余地あり。getStatで得たリストの要素を活用すればよい。
   def getLineSeg(list) do
     line_seg_list = Enum.take(list, 18)
     left_list = Enum.take(list, -length(list)+18)
@@ -62,6 +62,7 @@ defmodule DataConv do
     [map, left_list]
   end
 
+  #【時間があれば修正】Enum.tekeの取得数は変更の余地あり。getStatで得たリストの要素を活用すればよい。
   def getTriangle(list) do
     triangle_list = Enum.take(list, 12)
     left_list = Enum.take(list, -length(list)+12)

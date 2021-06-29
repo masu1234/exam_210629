@@ -1,0 +1,43 @@
+<h1>Show Center</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @center.name %>
+  </li>
+
+  <li>
+    <strong>Area:</strong>
+    <%= @center.area %>
+  </li>
+
+  <li>
+    <strong>Prefecture:</strong>
+    <%= @center.prefecture %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @center.city %>
+  </li>
+
+  <li>
+    <strong>Adress:</strong>
+    <%= @center.adress %>
+  </li>
+
+  <li>
+    <strong>Lng:</strong>
+    <%= @center.lng %>
+  </li>
+
+  <li>
+    <strong>Lat:</strong>
+    <%= @center.lat %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.center_path(@conn, :edit, @center) %></span>
+<span><%= link "Back", to: Routes.center_path(@conn, :index) %></span>

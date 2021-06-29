@@ -1,0 +1,38 @@
+<h1>Listing Centers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Area</th>
+      <th>Prefecture</th>
+      <th>City</th>
+      <th>Adress</th>
+      <th>Lng</th>
+      <th>Lat</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for center <- @centers do %>
+    <tr>
+      <td><%= center.name %></td>
+      <td><%= center.area %></td>
+      <td><%= center.prefecture %></td>
+      <td><%= center.city %></td>
+      <td><%= center.adress %></td>
+      <td><%= center.lng %></td>
+      <td><%= center.lat %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.center_path(@conn, :show, center) %></span>
+        <span><%= link "Edit", to: Routes.center_path(@conn, :edit, center) %></span>
+        <span><%= link "Delete", to: Routes.center_path(@conn, :delete, center), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Center", to: Routes.center_path(@conn, :new) %></span>
