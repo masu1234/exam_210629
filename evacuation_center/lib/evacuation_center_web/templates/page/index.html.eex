@@ -1,3 +1,5 @@
+<h2>市町村を選択</h2>
+
 
 <h1>避難所一覧（Evacuation Center）</h1>
 
@@ -27,8 +29,6 @@ L.marker([<%= center.lng %>, <%= center.lat %>]).addTo(map)
       <th>Prefecture</th>
       <th>City</th>
       <th>Adress</th>
-      <th>Lng</th>
-      <th>Lat</th>
 
       <th></th>
     </tr>
@@ -41,8 +41,6 @@ L.marker([<%= center.lng %>, <%= center.lat %>]).addTo(map)
       <td><%= center.prefecture %></td>
       <td><%= center.city %></td>
       <td><%= center.adress %></td>
-      <td><%= center.lng %></td>
-      <td><%= center.lat %></td>
 
       <td>
         <span><%= link "Show", to: Routes.center_path(@conn, :show, center) %></span>

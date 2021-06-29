@@ -17,6 +17,8 @@ defmodule EvacuationCenterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/city/:city", PageController, :show
+
 
     resources "/centers", CenterController
     resources "/posts", PostController
