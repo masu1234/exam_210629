@@ -9,16 +9,47 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([35.685344,	139.739763]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
-
 </script>
 
 <%= for center <- @centers  do%>
 <script>
 L.marker([<%= center.lng %>, <%= center.lat %>]).addTo(map)
-    .bindPopup('<%= center.name %>')
-    .openPopup();
+    .bindPopup('<%= center.name <> "("<> center.adress <> ")" %>')
 </script>
 <% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Area</th>
+      <th>Prefecture</th>
+      <th>City</th>
+      <th>Adress</th>
+      <th>Lng</th>
+      <th>Lat</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for center <- @centers do %>
+    <tr>
+      <td><%= center.name %></td>
+      <td><%= center.area %></td>
+      <td><%= center.prefecture %></td>
+      <td><%= center.city %></td>
+      <td><%= center.adress %></td>
+      <td><%= center.lng %></td>
+      <td><%= center.lat %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.center_path(@conn, :show, center) %></span>
+        <span><%= link "Edit", to: Routes.center_path(@conn, :edit, center) %></span>
+        <span><%= link "Delete", to: Routes.center_path(@conn, :delete, center), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
